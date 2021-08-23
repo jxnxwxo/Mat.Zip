@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="mapper.board">   
+
+   <select id="selectAllBoard" resultType="BoardVO">   
+      <![CDATA[
+         select 
+            a.board_num,
+            a.title,
+            a.contents,
+            b.nickname,
+            a.reg_date,
+            a.hit
+         from BOARDS a
+         inner join CUSTOMER b
+            on a.writer = b.cust_num 
+         where a.bd_del is null
+         order by a.board_num desc         
+      ]]>
+   </select>
+   
+   <!-- 게시물 작성 -->
+   <insert id="insert" parameterType="java.util.Map">
+      <![CDATA[
+         insert into BOARDS (title,contents,writer,imgFile, hit) 
+         values (#{title}, #{contents}, #{writer}, #{imgFile}, 0)      
+      ]]>
+   </insert>
+   
+   <!-- 게시물 조회 -->
+   <select id="selectArticle" resultType="BoardVO" parameterType="int">
+      <![CDATA[
+         select a.*,
+               b.nickname 
+           from BOARDS a
+     inner join CUSTOMER b
+             on a.writer = b.cust_num
+         where a.board_num=#{board_num}
+         and a.bd_del is null
+      ]]>
+   </select>
+   
+   <!-- 조회수 올리기 -->
+   <update id="updateHit" parameterType="java.lang.Integer">
+      <![CDATA[
+         update BOARDS
+         set hit = hit + 1 
+         where board_num = #{board_num}
+      ]]>
+   </update>
+   
+   <!-- 게시물 총 갯수 -->
+   <select id="countArticle" parameterType="hashMap" resultType="int">
+      <![CDATA[
+         select count(board_num)
+         from BOARDS
+         where bd_del is null
+      ]]>
+      <if test='searchType == "title"'>
+            and title LIKE CONCAT('%',#{keyword},'%')
+      </if>
+      <if test='searchType == "contents"'>   
+            and  contents LIKE CONCAT('%',#{keyword},'%')
+      </if>
+      <if test='searchType == "title_contents"'>
+         and  title LIKE CONCAT('%',#{keyword},'%')
+            or contents LIKE CONCAT('%',#{keyword},'%') 
+      </if>
+      <if test='searchType == "writer"'>
+         and  writer LIKE CONCAT('%',#{keyword},'%')
+      </if>
+      
+      
+   </select>
+   
+   <!-- 게시물 목록 + 페이징(mySql) -->
+   <select id="selectAllBoardPaging" parameterType="hashMap" resultType="BoardVO">   
+      <![CDATA[
+       select a.board_num,
+            a.title,
+            a.contents,
+            b.nickname,
+            a.reg_date,
+            a.hit
+         from (
+            select *
+            from BOARDS
+            where 1=1
+            order by board_num desc
+         ) a
+         inner join CUSTOMER b
+            on a.writer = b.cust_num
+         where a.bd_del is null
+      ]]>
+      <if test='searchType == "title"'>
+            and title LIKE CONCAT('%',#{keyword},'%')
+      </if>
+      <if test='searchType == "contents"'>   
+            and  contents LIKE CONCAT('%',#{keyword},'%')
+      </if>
+      <if test='searchType == "title_contents"'>
+         and  title LIKE CONCAT('%',#{keyword},'%')
+            or contents LIKE CONCAT('%',#{keyword},'%')
+      </if>
+      <if test='searchType == "writer"'>
+         and  writer like LIKE CONCAT('%',#{keyword},'%')
+      </if>
+      <![CDATA[
+		limit #{displayPost} , #{postNum}
+		]]>
+   </select>
+   
+   
+   <!-- 게시물 목록 + 페이징(MySQL) -->
+   <!-- <select id="selectAllBoardPaging" parameterType="hashMap" resultType="BoardVO">   
+      <![CDATA[
+         select board_num,
+            title,
+            contents,
+            writer,
+            reg_date,
+            hit
+         from BOARDS
+         order by board_num desc
+         limit #{displayPost}, #{postNum}
+         
+      ]]>
+   </select> -->
+   
+   <resultMap type="HashMap" id="ResultMap">
+         <id column="imgFile" property="imgFile"></id>
+   </resultMap>
+   
+    <!-- 이미지 조회 -->
+    <select id="getByteImage" resultMap="ResultMap">
+      <![CDATA[
+            select imgFile
+            from BOARDS
+            where board_num = #{board_num}
+         ]]>
+    </select>
+   
+   <!-- 게시물 수정 -->   
+   <update id="modify" parameterType="com.project.vo.BoardVO">
+      <![CDATA[
+         update BOARDS
+         set
+            title = #{title},
+            contents = #{contents}   
+         where board_num = #{boardNum} 
+         
+      ]]>
+   </update>
+   
+   <!-- 게시물 삭제 -->
+   <update id="delete" parameterType="int">
+      <![CDATA[
+         update BOARDS
+         set
+            bd_del = 'y'
+         where board_num = #{boardNum}
+      ]]>
+   </update>
+
+</mapper>

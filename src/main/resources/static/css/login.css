@@ -1,0 +1,108 @@
+@charset "UTF-8";
+
+*{
+  margin: 0px;
+  padding: 0px;
+  text-decoration: none;
+  font-family:sans-serif;
+
+}
+
+body {
+  background-image: #34495e;
+}
+
+.loginForm {
+  position:absolute;
+  width:600px;
+  height:500px;
+  padding: 30px, 20px;
+  background-color:#FFFFFF;
+  text-align:center;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  border-radius: 15px;
+}
+
+.loginForm h2{
+  text-align: center;
+  margin: 30px;
+}
+
+.idForm{
+  border-bottom: 2px solid #adadad;
+  margin: 30px;
+  padding: 10px 10px;
+}
+
+.passForm{
+  border-bottom: 2px solid #adadad;
+  margin: 30px;
+  padding: 10px 10px;
+}
+
+.id {
+  width: 100%;
+  border:none;
+  outline:none;
+  color: #636e72;
+  font-size:16px;
+  height:25px;
+  background: none;
+}
+
+.pw {
+  width: 100%;
+  border:none;
+  outline:none;
+  color: #636e72;
+  font-size:16px;
+  height:25px;
+  background: none;
+}
+
+#loginBtn {
+  position:relative;
+  width:188px;
+  height:40px;
+  margin: 10px 10px 10px 10px;
+  background:#fff ;
+  background-position: center;
+  background-size: 200%;
+  color:#ad2a38;
+  font-weight: bold;
+  border:2;
+  border-color:#9B2B37;
+  border-radius: 5px;
+  cursor:pointer;
+  display:inline-block;
+}
+
+#loginBtn:hover {
+  background-position: right;
+}
+
+#etcBtn {
+  position:relative;
+  width:188px;
+  height:40px;
+  margin: 10px 10px 10px 10px;
+  background: #ad2a38;
+  background-position: center;
+  background-size: 200%;
+  color:white;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor:pointer;
+  display:inline-block;
+}
+
+#etcBtn:hover {
+  background-position: right;
+}
+
+.bottomText {
+  text-align: center;
+}
+

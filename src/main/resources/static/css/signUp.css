@@ -1,0 +1,342 @@
+@charset "UTF-8";
+
+* {
+  margin: 0px;
+  padding: 0px;
+  text-decoration: none;
+  font-family:sans-serif;
+
+}
+
+body {
+  background-image:#34495e;
+}
+
+select {
+	width:40px;
+	-webkit-appearance: none; 
+    -moz-appearance: none; 
+    appearance: none;
+    background: url(../img/da.png) no-repeat 95% 50%; /* 화살표 모양의 이미지 */ 
+}
+select::-ms-expand { 
+	 
+}
+#yy{
+	width:60px;
+}
+#mm{
+	width:40px;
+}
+#dd{
+	width:40px;
+}
+.joinForm {
+  position:absolute;
+  width:500px;
+  height:745px;
+  padding: 30px, 20px;
+  background-color:#FFFFFF;
+  text-align:center;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  border-radius: 15px;
+}
+
+.joinForm h2 {
+  text-align: center;
+  margin: 30px;
+}
+
+.textForm {
+  border-bottom: 2px solid #adadad;
+  margin: 30px;
+  padding: 10px 10px;
+}
+
+.birthForm {
+  border-bottom: 2px solid #adadad;
+  margin: 30px;
+  padding: 10px 10px;
+}
+
+.emailForm {
+  border-bottom: 2px solid #adadad;
+  margin: 30px;
+  padding: 10px 10px;
+}
+
+.id {
+  width: 100%;
+  border:none;
+  outline:none;
+  color: #636e72;
+  font-size:16px;
+  height:25px;
+  background: none;
+}
+
+	/* 중복아이디 존재하지 않는경우 */
+	.id_input_re_1{
+		color : green;
+		display : none;
+	}
+	/* 중복아이디 존재하는 경우 */
+	.id_input_re_2{
+		color : red;
+		display : none;
+	}
+	
+	#findBtn{
+	}
+	
+	#findPwBtn{
+		display : none;
+	}
+	
+	
+.pw {
+  width: 100%;
+  border:none;
+  outline:none;
+  color: #636e72;
+  font-size:16px;
+  height:25px;
+  background: none;
+}
+
+.cpw {
+  width: 100%;
+  border:none;
+  outline:none;
+  color: #636e72;
+  font-size:16px;
+  height:25px;
+  background: none;
+}
+
+.name {
+  width: 100%;
+  border:none;
+  outline:none;
+  color: #636e72;
+  font-size:16px;
+  height:25px;
+  background: none;
+}
+
+.birth {
+  width: 100%;
+  border:none;
+  outline:none;
+  color: #636e72;
+  font-size:16px;
+  height:25px;
+  background: none;
+}
+
+
+.email {
+  width: 100%;
+  border:none;
+  outline:none;
+  color: #636e72;
+  font-size:16px;
+  height:25px;
+  background: none;
+}
+
+.emailcode {
+  width: 100%;
+  border:none;
+  outline:none;
+  color: #636e72;
+  font-size:16px;
+  height:25px;
+  background: none;
+}
+
+.nickname {
+  width: 100%;
+  border:none;
+  outline:none;
+  color: #636e72;
+  font-size:16px;
+  height:25px;
+  background: none;
+}
+
+/* .cellphoneNo {
+  width: 100%;
+  border:none;
+  outline:none;
+  color: #636e72;
+  font-size:16px;
+  height:25px;
+  background: none;
+} */
+#divBtn{
+	text-align:center;
+}
+
+.btn {
+  position:absolute;
+  right: 0%;
+  width:20%;
+  height:30px;
+  magin-bottom:10px;
+  background: #ad2a38;
+  background-position: center;
+  background-size: 100%;
+  color:white;
+  font-weight: bold;
+  border:#9b2b37;
+  border-radius: 5px;
+  cursor:pointer;
+  display:inline;
+}
+
+.btn:hover {
+  background-position: right;
+}
+
+.btn-summit {
+  position:relative;
+  width:30%;
+  height:35px;
+  background: #ad2a38;
+  background-position: center;
+  background-size: 100%;
+  color:white;
+  font-weight: bold;
+  border:#9b2b37;
+  border-radius: 5px;
+  cursor:pointer;
+  display:inline;
+}
+
+#confirm {
+  position:relative;
+  width:20%;
+  height:30px;
+  padding:0 0 0 0;
+  background: #ad2a38;
+  background-position: center;
+  background-size: 100%;
+  color:white;
+  font-weight: bold;
+  border:#9b2b37;
+  border-radius: 5px;
+  cursor:pointer;
+  display:inline;
+}
+#cancel {
+  position:relative;
+  width:20%;
+  height:30px;
+  padding:0 0 0 0;
+  background: #ad2a38;
+  background-position: center;
+  background-size: 100%;
+  color:white;
+  font-weight: bold;
+  border:#9b2b37;
+  border-radius: 5px;
+  cursor:pointer;
+  display:inline;
+}
+
+#editPw {
+  position:relative;
+  width:30%;
+  height:30px;
+  padding:0 0 0 0;
+  margin-right:-30px;
+  margin: 0px 10px 0px 10px;
+  background: #ad2a38;
+  background-position: center;
+  background-size: 100%;
+  color:white;
+  font-weight: bold;
+  border:#9b2b37;
+  border-radius: 5px;
+  cursor:pointer;
+  display:inline-block;
+}
+
+#deleteId {
+  position:relative;
+  width:25%;
+  height:30px;
+  padding:0 0 0 0;
+  margin:-30px;
+  background:#fff;
+  background-position: center;
+  background-size: 100%;
+  color:#9b2b37;
+  font-weight: bold;
+  border:2;
+  border-color:#ad2a38;
+  border-radius: 5px;
+  cursor:pointer;
+  display:inline-block;
+}
+#goodbyeBtn {
+  position:relative;
+  width:25%;
+  height:30px;
+  padding:0 0 0 0;
+  margin:-30px;
+  background:#fff;
+  background-position: center;
+  background-size: 100%;
+  color:#9b2b37;
+  font-weight: bold;
+  border:2;
+  border-color:#ad2a38;
+  border-radius: 5px;
+  cursor:pointer;
+  display:inline-block;
+}
+
+#findBtn {
+  position:relative;
+  width:50%;
+  height:40px;
+  padding:0 0 0 0;
+  margin-right:-30px;
+  margin: 10px 0px 10px 0px;
+  background: #ad2a38;
+  background-position: center;
+  background-size: 100%;
+  color:white;
+  font-weight: bold;
+  border:#9b2b37;
+  border-radius: 5px;
+  cursor:pointer;
+  display:inline-block;
+}
+#findPwBtn {
+  position:relative;
+  width:50%;
+  height:40px;
+  padding:0 0 0 0;
+  margin-right:-30px;
+  margin: 10px 0px 10px 0px;
+  background: #ad2a38;
+  background-position: center;
+  background-size: 100%;
+  color:white;
+  font-weight: bold;
+  border:#9b2b37;
+  border-radius: 5px;
+  cursor:pointer;
+  display:inline-block;
+}
+@media (max-width: 992px) {
+  .btn {
+    margin: 0 48px 0 0;
+    padding: 6px 18px;
+  }
+}

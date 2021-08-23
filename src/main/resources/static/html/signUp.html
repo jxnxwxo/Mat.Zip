@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+ <html>
+ <head>
+   <meta charset="utf-8">
+   <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+  
+   <script type="text/javascript" src="../js/my.js"></script>
+  
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/4.0.2/bootstrap-material-design.css">
+   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+   <link rel="stylesheet" href="../css/style.css">
+   <link rel="stylesheet" href="../css/signUp.css">
+   
+   <title>회원가입</title>
+ </head>
+ 	<body>
+		 <form id="join_form" name="join_Form" class="joinForm">
+	      <h2>회원가입</h2>
+	      <div class="textForm">
+	        <input name="loginId" type="text" id="id" class="id" maxlength="12" placeholder="아이디(영문, 숫자 4~12자리)">
+	        <button type="button" class="btn" id="IdChkBtn">중복확인</button>
+	      </div>
+	      <span class="id_input_re_1">사용 가능한 아이디입니다.</span>
+		  <span class="id_input_re_2">아이디가 이미 존재합니다.</span>
+	      
+	      <div class="textForm">
+	        <input name="loginPw" type="password" id="pw" class="pw" maxlength="16" placeholder="비밀번호(영문, 숫자, 특수문자 포함 8~16자리)">
+	      </div>
+	      
+	       <div class="textForm">
+	        <input name="loginPwConfirm" type="password" id="cpass" class="cpw" placeholder="비밀번호 확인">
+	      </div>
+	      
+	      <div class="textForm">
+	        <input name="name" type="text" id="nickname" class="nickname" maxlength="6" placeholder="닉네임(한글 2~6자리)">
+	      </div>
+		  
+		  <div class="birthForm">
+		  <p align="left" style="color:grey">생년월일</p>
+		  <!-- <input name="birth" type="text" id="birth" class="birth" placeholder="생년월일"> -->
+		  <script  laguage="JavaScript">
+		  	
+		  	var date = new Date();
+			var year = date.getFullYear();
+	
+			var month = date.getMonth();
+			var day = date.getDate();
+			var month = new String(date.getMonth() + 1);
+			month = month >= 10 ? month : '0' + month; // month 두자리로 저장
+			var day = new String(date.getDate());
+			day = day >= 10 ? day : '0' + day; // day 두자리로 저장
+	
+			var start = year
+			var end = year - 100;
+			
+			document.write("<font size='3' color='grey'><select name='yy' id='yy'>");
+			document.write("<option value='' selected>");
+			for (i=start;i>=end;i--) document.write("<option>"+i);
+			document.write("</select>년  ");
+			
+			document.write("<select name=mm id=mm>");
+			document.write("<option value='' selected>");
+			for (i=1;i<=9;i++) document.write("<option>"+'0'+i);
+			for (i=10;i<=12;i++) document.write("<option>"+i);
+			document.write("</select>월  ");
+			
+			document.write("<select name=dd id=dd>");
+			document.write("<option value='' selected>");
+			for (i=1;i<=9;i++) document.write("<option>"+'0'+i);
+			for (i=10;i<=31;i++) document.write("<option>"+i);
+			document.write("</select>일  </font>");
+			</script>
+	      </div>
+	       
+	      <div class="emailForm">
+	        <input name="email" type="text" id="email" class="email" placeholder="이메일">
+	        <button type="button" class="btn" id="EmailCodeSend">이메일인증</button>
+	        
+	      <div id="verifyDiv" style="display: none">
+	        	<input name="email" type="text" id="emailcode" class="emailcode" placeholder="인증번호">
+	        	<button type="button" class="btn" id="EmailVerify">인증하기</button>
+	        	<input type="hidden" id="verifyCode">
+	        </div>
+	      </div>
+	      
+	      <input type="button" class="btn-summit" id="memberInsertBtn" value="회원가입하기"/>
+    	</form>
+
+  <!-- Vendor JS Files -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="vendor/php-email-form/validate.js"></script>
+  <script src="vendor/jquery-countdown/jquery.countdown.min.js"></script>
+  
+  <!-- Template Main JS File -->
+  <script src="../js/main.js"></script>
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2b2655fafe49077f90c42eff539a0fc3&libraries=services"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/fetch/0.10.1/fetch.min.js'></script>
+    </body>
+    </html>

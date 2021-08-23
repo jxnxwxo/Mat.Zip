@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../css/signUp.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+
+<title>비밀번호 찾기</title>
+</head>
+<body>
+	<div class="w3-content w3-container w3-margin-top">
+		<div class="w3-container w3-card-4">
+			<div class="w3-center w3-large w3-margin-top">
+				<h3>비밀번호 찾기</h3>
+			</div>
+			<div>
+				<p>
+					<label>ID</label>
+					<input class="w3-input" type="text" id="id" name="id" required>
+				</p>
+				<p>
+					<label>Email</label>
+					<input class="w3-input" type="text" id="email" name="email" required>
+				</p>
+				<div id="divBtn">
+					<button type="button" id=findBtn class="btn">찾기</button>
+					<button type="button" id=findBtn onclick="window.close()" class="btn">취소</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+			<script>
+			$(document).ready(function () {
+				
+				$("#findBtn").click(function () {
+					
+					// id, email 공백이면 return
+					if(id.value == ""){
+						alert("아이디를 입력해주세요.");
+						$("#id").focus();
+						return;
+					}
+					if(email.value == ""){
+						alert("이메일을 입력해주세요.");
+						$("#email").focus();
+						return;
+					}
+					
+					// id랑 이메일 최종인증
+					// ajax를 두개 !=0 이면 유저가있는거고 else 없는
+					
+					
+					$.ajax({
+						url: "/updatePw",
+						type: "post",
+						data: { id:$('#id').val(), email:$('#email').val() },
+						success:function(data){
+							console.log(data);
+							if(data != 0){
+								alert('임시비밀번호를 이메일로 전송했습니다.');
+							} else {
+								alert('일치하는 회원정보가 없습니다.')
+							}
+						}
+					})
+				})
+			})
+			</script>
+</body>
+</html>

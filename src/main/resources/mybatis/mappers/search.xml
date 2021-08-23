@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="search">
+
+   <!-- 음식점 검색 -->
+   <select id="searchRestaurantList" parameterType="RestaurantVO" resultType="RestaurantVO">
+      <![CDATA[
+         SELECT B.RT_NUM         /* 음식점번호 */
+              , B.RT_NAME         /* 음식점이름 */
+              , B.RT_ADDRESS      /* 음식점주소 */
+              , B.RT_TEL         /* 음식점전화번호 */
+              , B.RT_LOWPRICE      /* 음식점최저가 */
+              , B.RT_HIGHPRICE      /* 음식점최고가 */
+              , B.RT_CATEGORY      /* 음식점카테고리 */
+              , B.RT_INFO         /* 음식점정보 */
+              , B.RT_GRADE         /* 음식점한줄평(등급) */
+              , B.RT_RSV         /* 예약필수 */
+              , B.RT_VALET         /* 주차 */
+              , B.RT_X            /* 위도 */
+              , B.RT_Y            /* 경도 */
+              , B.RT_HP         /* 음식점사이트 */
+              , B.RT_ETC         /* 비고 */
+         FROM (
+             SELECT 
+                 *
+              FROM RESTAURANT A
+             WHERE 1=1   
+      ]]>
+       <if test="rtName != '' and rtName != null">
+      <!-- 음식점 이름으로 검색 -->
+         AND RT_NAME LIKE CONCAT('%',#{rtName},'%') 
+      </if>
+      
+      <if test="rtAddress != '' and rtAddress != null">
+      <!-- 음식점 주소로 검색 -->
+         AND RT_ADDRESS LIKE CONCAT('%',#{rtAddress},'%') 
+      </if>
+      
+      <if test="rtGrade != '' and rtGrade != null">
+      <!-- 음식점 이름으로 검색 -->
+         AND RT_GRADE LIKE CONCAT('%',#{rtGrade},'%') 
+      </if>
+      <![CDATA[           
+             ORDER BY A.RT_ADDRESS ASC
+         ) B
+         limit #{temp} , #{postSize}
+      ]]>
+   </select>
+   
+   <!-- 음식점 전체개수 -->
+   <select id="searchRestaurantTotalCnt" parameterType="RestaurantVO" resultType="int">
+      <![CDATA[
+         SELECT COUNT(*)
+           FROM RESTAURANT
+          WHERE 1=1
+      ]]>
+      
+      <if test="rtName != '' and rtName != null">
+      <!-- 음식점 이름으로 검색 -->
+         AND RT_NAME LIKE CONCAT('%',#{rtName},'%') 
+      </if>
+      
+      <if test="rtAddress != '' and rtAddress != null">
+      <!-- 음식점 주소로 검색 -->
+         AND RT_ADDRESS LIKE CONCAT('%',#{rtAddress},'%') 
+      </if>
+      
+      <if test="rtGrade != '' and rtGrade != null">
+      <!-- 음식점 grade로 검색 -->
+         AND RT_GRADE LIKE CONCAT('%',#{rtGrade},'%') 
+      </if>
+   </select>
+</mapper> 
